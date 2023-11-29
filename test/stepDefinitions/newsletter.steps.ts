@@ -124,8 +124,6 @@ Then(/^Email contains valid startDate$/, async () => {
   const formattedStartDate = convertDateFormat(startDate);
 
   const startDateLine = `You will get your first newsletter beginning ${formattedStartDate}`;
-  console.log(globalEmailData?.emailMessageTextRaw);
-  console.log(startDateLine);
 
   const startDateLineExists =
     globalEmailData?.emailMessageTextRaw.includes(startDateLine);
