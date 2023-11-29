@@ -7,8 +7,6 @@ interface EmailData {
 
 export let globalEmailData: EmailData | undefined;
 
-
-
 export const getLatestEmail = async () => {
   const apiKey = process.env.EMAIL_APIKEY;
   const emailEncoded = `${process.env.EMAIL}`.replace(/@/g, "%40");
@@ -21,7 +19,7 @@ export const getLatestEmail = async () => {
     },
   });
 
-  const json = await response.json()
+  const json = await response.json();
   globalEmailData = {
     subject: json[0].subject,
     fromAddress: json[0].from[0].address,
@@ -32,7 +30,7 @@ export const getLatestEmail = async () => {
 
 export const cleanEmailBox = async () => {
   const apiKey = process.env.EMAIL_APIKEY;
- const emailEncoded = `${process.env.EMAIL}`.replace(/@/g, "%40");
+  const emailEncoded = `${process.env.EMAIL}`.replace(/@/g, "%40");
   const apiUrl = `${process.env.EMAIL_URL}addresses/${emailEncoded}/messages`;
   await fetch(apiUrl, {
     method: "delete",
@@ -47,7 +45,7 @@ export const getEmailMessage = async () => {
   const emailEncoded = `${process.env.EMAIL}`.replace(/@/g, "%40");
   const apiUrl = `${process.env.EMAIL_URL}body/${emailEncoded}/${globalEmailData?.messageId}`;
   const response = await fetch(apiUrl, {
-    method: "get", 
+    method: "get",
     headers: {
       "Content-Type": "application/json",
       "Mailsac-Key": `${apiKey}`,

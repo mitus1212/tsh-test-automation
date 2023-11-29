@@ -98,9 +98,9 @@ Then(/^Succesfully added to newsletter window is visible$/, async () => {
 Then(/^Error startDate is visible$/, async () => {
   const startDateError = await NewsletterPage.startDateError;
   await startDateError.waitForExist({ timeout: 15000 });
-  // expect(await startDateError).toHaveText(
-  //   `"endDate" must be at least 30 days after the "startDate"!`
-  // );
+  expect(await startDateError).toHaveText(
+    `"endDate" must be at least 30 days after the "startDate"!`
+  );
 });
 
 Then(/^User received an email$/, async () => {
@@ -193,5 +193,14 @@ Then(/^Agreement Field required error is visible$/, async () => {
   await agreementCheckboxError.waitForExist({ timeout: 10000 });
   expect(await agreementCheckboxError).toHaveText(
     `Accepting terms and condition is required!`
+  );
+});
+
+Then(/^Yesterday Date is not clickable$/, async () => {
+  await NewsletterPage.startDateSelect.click();
+  const yesterdayDateCalendar = await NewsletterPage.yesterdayDateCalendar;
+  await yesterdayDateCalendar.waitForExist({ timeout: 10000 });
+  expect(await yesterdayDateCalendar.getAttribute("aria-disabled")).toEqual(
+    "true"
   );
 });

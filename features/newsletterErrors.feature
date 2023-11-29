@@ -53,3 +53,6 @@ Feature: Newsletter form
     And Newsletter Type Field required error is visible
     And Start Date Field required error is visible
     And Agreement Field required error is visible
+
+  Scenario: User can't choose past date in the calendar
+    Then Yesterday Date is not clickable

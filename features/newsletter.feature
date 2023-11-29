@@ -3,7 +3,7 @@ Feature: Newsletter form
   Background:
     Given User is on the newsletter page
 
-  Scenario: User gets an email after without endDate provided
+  Scenario: [Newsletter] User gets an email after without endDate provided
     And Mailbox is empty
     When User provides a valid data
     And User provides a valid start date

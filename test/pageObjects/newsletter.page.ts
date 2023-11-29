@@ -77,9 +77,7 @@ class NewsletterPage {
   public get todayDateCalendar(): ChainablePromiseElement<
     Promise<WebdriverIO.Element>
   > {
-    return $(
-      "//td[contains(@class,'ant-calendar-cell ant-calendar-today')]"
-    );
+    return $("//td[contains(@class,'ant-calendar-cell ant-calendar-today')]");
   }
 
   public get tomorrowDateCalendar(): ChainablePromiseElement<
@@ -89,6 +87,12 @@ class NewsletterPage {
       "//td[contains(@class,'ant-calendar-cell ant-calendar-today')]/following-sibling::td/child::div"
     );
   }
+
+  public get yesterdayDateCalendar(): ChainablePromiseElement<
+  Promise<WebdriverIO.Element>
+> {
+  return $("(//td[contains(@class,'ant-calendar-cell ant-calendar-today')]/preceding-sibling::td/child::div)[last()]");
+}
 
   public get newsletterTypeDropdownValue(): ChainablePromiseElement<
     Promise<WebdriverIO.Element>
@@ -159,40 +163,50 @@ class NewsletterPage {
   public get emailFieldError(): ChainablePromiseElement<
     Promise<WebdriverIO.Element>
   > {
-    return $("//input[@id='newsletter_email']/parent::span/following-sibling::div");
+    return $(
+      "//input[@id='newsletter_email']/parent::span/following-sibling::div"
+    );
   }
 
   public get firstNameFieldError(): ChainablePromiseElement<
-  Promise<WebdriverIO.Element>
-> {
-  return $("//input[@id='newsletter_name']/parent::span/following-sibling::div");
-}
+    Promise<WebdriverIO.Element>
+  > {
+    return $(
+      "//input[@id='newsletter_name']/parent::span/following-sibling::div"
+    );
+  }
 
+  public get surnameFieldError(): ChainablePromiseElement<
+    Promise<WebdriverIO.Element>
+  > {
+    return $(
+      "//input[@id='newsletter_surname']/parent::span/following-sibling::div"
+    );
+  }
 
-public get surnameFieldError(): ChainablePromiseElement<
-Promise<WebdriverIO.Element>
-> {
-return $("//input[@id='newsletter_surname']/parent::span/following-sibling::div");
-}
+  public get newsletterTypeFieldError(): ChainablePromiseElement<
+    Promise<WebdriverIO.Element>
+  > {
+    return $(
+      "//div[@id='newsletter_newsType']/ancestor::div[contains(@class, 'has-error')]/descendant::div[contains(@class, 'form-explain')]"
+    );
+  }
 
-public get newsletterTypeFieldError(): ChainablePromiseElement<
-Promise<WebdriverIO.Element>
-> {
-return $("//div[@id='newsletter_newsType']/ancestor::div[contains(@class, 'has-error')]/descendant::div[contains(@class, 'form-explain')]");
-}
+  public get startDateFieldError(): ChainablePromiseElement<
+    Promise<WebdriverIO.Element>
+  > {
+    return $(
+      "//span[@id='newsletter_startDate']/ancestor::div[contains(@class, 'has-error')]/descendant::div[contains(@class, 'form-explain')]"
+    );
+  }
 
-public get startDateFieldError(): ChainablePromiseElement<
-Promise<WebdriverIO.Element>
-> {
-return $("//span[@id='newsletter_startDate']/ancestor::div[contains(@class, 'has-error')]/descendant::div[contains(@class, 'form-explain')]");
-}
-
-public get agreementCheckboxError(): ChainablePromiseElement<
-Promise<WebdriverIO.Element>
-> {
-return $("//input[@id='newsletter_agreement']/ancestor::div[contains(@class, 'has-error')]/descendant::div[contains(@class, 'form-explain')]");
-}
-
+  public get agreementCheckboxError(): ChainablePromiseElement<
+    Promise<WebdriverIO.Element>
+  > {
+    return $(
+      "//input[@id='newsletter_agreement']/ancestor::div[contains(@class, 'has-error')]/descendant::div[contains(@class, 'form-explain')]"
+    );
+  }
 }
 
 export default new NewsletterPage();
