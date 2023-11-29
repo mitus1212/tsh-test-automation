@@ -1,6 +1,7 @@
 # tsh-test-automation
 
 Implemented using Typescript with WebdriverIo. NodeJs 18.15.0 or newer is required to run tests.
+There are still many test cases to cover, these are just examples.
 
 # How to run all tests:
 
