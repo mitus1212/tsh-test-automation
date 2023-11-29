@@ -5,7 +5,7 @@ on:
       ENV:
         required: true
         type: string
-        default: "staging"
+        default: "dev"
       BROWSER:
         required: true
         default: "chrome"
