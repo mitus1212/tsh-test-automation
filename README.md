@@ -16,7 +16,7 @@ For login tests, for example:
 
 `npm run wdio -- --cucumberOpts.tagExpression='@sanity'`
 
-Test results are visible in the console and report is generated in xml format to "/out/report/" directory Tests can be run via Github Actions -> API Regression on Staging.
+Test results are visible in the console and report is generated in json format to ".tmp/json" directory. Tests can be run via Github Actions -> Regression Tests.
 
 By default headless mode is turned on, to switch off you have to remove this array element:
 
