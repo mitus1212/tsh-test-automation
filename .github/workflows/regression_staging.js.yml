@@ -29,14 +29,14 @@ jobs:
         uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
-          node-version: 16.13.0
+          node-version: 18.18.2
       - name: Install
         run: npm install
       - name: "Create env file"
         run: |
           touch .env
           echo BASE_URL=${{ secrets.BASE_URL}} >> .env
-          echo PASSWORD=${{ secrets.PASSWORD }} >> .env
+          echo EMAIL=${{ secrets.EMAIL }} >> .env
           echo EMAIL_APIKEY=${{ secrets.EMAIL_APIKEY }} >> .env
           echo EMAIL_URL=${{ secrets.EMAIL_URL }} >> .env
           cat .env
